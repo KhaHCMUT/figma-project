@@ -1,0 +1,186 @@
+Lựa chọn khối Selector: (Không tính dấu <>)
+1. Theo thẻ
+<div>: chọn tất cả khối là thẻ <div>
+.<class>: chọn tất cả khối có chứa class <class>
+#<id>: chọn khối có id <id>, id là độc nhất 
+*: chọn tất cả các khối
+
+2. Kết hợp
+<div>.<class>: (Ghi liên tục là dấu "và") chọn các khối chứa đồng thời các thẻ, class, id liên tục nhau
+<div>,<p>: (Dấu "," là "hoặc") chọn các thẻ, class, id được ngăn cách nhau bởi dấu ","
+<div> <p>: (Dấu cách là con) chọn các thẻ <p> là con của thẻ <div> (Nằm trong thẻ <div>)
+<div>><p>: (Dấu > là con trực tiếp) chọn các thẻ <p> là con trực tiếp của thẻ <div>
+<div>+<p>: (Dấu + là thẻ sau đầu) chọn thẻ <p> đầu tiên sau thẻ <div>
+<div>~<p>: (Dấu ~ là thẻ sau) chọn tất cả thẻ <p> sau thẻ <div>
+
+3. Theo giá trị
+[<attr>]: chọn các thẻ có thuộc tính [attr]
+[<attr>="<val>"]: chọn các thẻ có thuộc tính [attr] và nó bằng <val>
+[<attr>~="<val>"]: chọn các thẻ có thuộc tính [attr] và trong đó chứa từ <val> đơn lẻ
+[<attr>|="<val>"]: chọn các thẻ có thuộc tính [attr] và trong đó chứa từ <val> đứng đầu và chỉ chứa 1 từ
+[<attr>^="<val>"]: chọn các thẻ có thuộc tính [attr] và trong đó chứa từ <val> đứng đầu
+[<attr>$="<val>"]: chọn các thẻ có thuộc tính [attr] và trong đó chứa từ <val> đứng cuối
+
+4. Lớp trừu tượng
+:link - link chưa truy cập
+:visited - link đã truy cập
+:hover - lướt qua
+:active - nhấp vào
+:empty - rỗng
+:target - mục tiêu được chuyển đến
+
+:first-child - thẻ con đầu tiên của khối
+:last-child - thẻ con cuối cùng của khối
+:nth-child(n) - thẻ con thứ n của khối
+:only-child - thẻ con duy nhất của khối
+
+:first-of-type - thẻ loại đầu tiên của khối
+:last-of-type - thẻ loại cuối cùng của khối
+:nth-of-type(n) - thẻ loại thứ n của khối
+:only-of-type - thẻ loại duy nhất của khối
+
+:not(<p>) - loại trừ thẻ <p>
+
+5. Phần tử trừu tượng
+::first-line - chọn dòng đầu tiên của phần tử, ko áp dụng với display inline
+::first-letter - chọn chữ cái đầu tiên của phần tử
+::selection - chọn phần tử đang được bôi đen
+::marker - chọn các đánh dấu của li
+::before và ::after - thêm phần tử được quy định trước/sau phần tử được chọn
+
+5. Thứ tự ưu tiên
+* < element < class(.) < id(#) < inline(trong code html) < !important(trong code css)
+
+ 
+
+Thuộc tính CSS:
+
+1) Thuộc tính hiển thị
+// Độ trong suốt
+Opacity: n% - Thay đổi độ trong suốt của khối, 0% mờ hoàn toàn (Vẫn tồn tại khối)
+// Hiển thị
+Visibility: hidden/visible - Ẩn/hiện khối, khi ẩn thì vẫn chiếm không gian nhưng ko tương tác được (ko bôi vùng đó được)
+// Xuất hiện
+Display: none - Biến mất khối, khi biến mất thì khối sẽ ko hiển thị, ko chiếm ko gian
+
+2) Thuộc tính box
+- width, height: <unit> - Chiều rộng, cao của khối
+- max-width, max-height: <unit> - Chiều rộng, cao tối đa của khối
+- padding: <unit> - độ rộng vùng đệm
+	+ padding-<position>: <unit> - chọn hướng đệm
+	+ padding: <unit>*2 - chọn độ rộng vùng đệm cho (trên dưới, trái phải)
+	+ padding: <unit>*4 - chọn độ rộng vùng đệm cho (trên, phải, dưới, trái)
+- border: <unit> <line-style> <color> - chọn độ rộng, kiểu, màu cho biên
+	+ border-width: <unit>*4 (Quy tắc *4 như padding)
+	+ border-style: <line-style>*4
+	+ border-color: <color>*4
+- border-radius: <unit> - bo tròn các góc của biên
+	+ border-radius: <unit*4>
+- margin: <unit> - độ rộng vùng phân cách (khoảng cách với các phần tử khác)
+	+ (Thuộc tính tăng thêm như padding)
+- outline: <unit> <line-style> <color> - chọn thông số cho outline (vùng ngoài border và có thể đè lên margin)
+- outline-offset: <unit> - cách ra từ border
+- box-sizing: content-box / border-box - kích thước box sẽ thay đổi (nếu là content) khi thay đổi thông số padding hoặc border. Kích thước box sẽ ko thay đổi mà kích thước content sẽ thay đổi để phù hợp với các thông số padding và border (nếu là border)
+- display: inline/block/inline-block
+- box-shadow: <unit> <unit> <blur> <radius> <color> - chỉnh bóng cho khối
+	+ Đặt inset làm tham số đầu sẽ khiến bóng đổ trong khối
+- justify-content: căn theo chiều ngang các box con
+- align-item: căn theo chiều dọc
+
+3) Đơn vị <unit>
+n (px): pixel
+n (%): tỉ lệ so với box cha
+n (vw, vh): tỉ lệ so với khung nhìn
+n (em): kích thước so với khung chữ hiện tại
+n (rem): kích thước so với khung chữ của thẻ html
+calc() - dùng để tính toán kích thước dùng + - * /
+var(--tên_biến) - lấy giá trị của biến được khai báo trong thẻ cha
+
+4) Màu sắc <color>
+rgb(r,g,b) : Màu rgb cơ bản - rgb(0,255)
+rgba(r,g,b,a): Màu rgb có độ mờ - a(0,1)
+#mamau : dùng 2 kí tự hex để biểu diễn từng màu
+color name
+
+5) Font <font>
+color: <color> - Chọn màu chữ
+font-size: <unit> - Chọn kích thước chữ
+font-family: <font> - Chọn font cho thẻ, có thể chọn nhiều font, khi chạy thì ưu tiên font có thể sài đầu tiên
+font-weight: int - Chọn độ dày (độ đậm) của chữ
+
+line-height: <unit> - Chọn độ rộng của dòng
+letter-spacing: <unit> - Khoảng cách giữa các chữ cái trong từ
+word-spacing: <unit> - Khoảng cách giữa các từ
+
+text-align: left/right/center/justify - Căn lề so với box cha
+text-decoration: <line-place> <line-style> <color> - Thêm gạch cho từ
+text-indent: <unit> - Khoảng cách so với lề
+text-transform: capitalize/lowercase/uppercase - Biến đổi từ thành các dạng viết in đầu / full thường / full in
+text-shadow: <unit> <unit> độ nhòe <color> - Tạo bóng ở vị trí tương đối qua 2 tham số đầu, có độ nhòe và màu sắc
+
+
+white-space: nowrap/pre - Ko xuống dòng / giữ nguyên định dạng
+word-break: break-all - Xuống dòng khi chữ quá dài dù liên tục
+overflow: hidden/scroll/auto - Xử lý văn bản khi quá box chứa nó, bỏ / thêm thanh cuộn / tự động thêm thanh cuộn nếu dài
+overscroll-behavior: điều chỉnh tương tác lăn chuột với scroll (nếu có)
+text-overflow: ellipsis - thêm dấu ... khi văn bản vượt box chứa
+
+Special: 
++ Dùng ::-webkit-scrollbar để sử dụng các attribute liên quan đến scrollbar
++ Dùng ::-webkit-line-clamp để thay đổi số dòng để thêm dấu ... trong text-overflow
+
+6) Background
+background-color: <color> - Chọn màu nền cho box, chỉ tô từ border trở vào
+background-image: url(hình ảnh) - Chọn hình ảnh cho nền
+	+ background-image: linear-gradient(<position>, <color> %, <color> %) - chọn nền gradient cho box
+background-repeat: - Chọn có lặp hình ảnh hay ko
+background-size: contain/cover - contain sẽ giữ nguyên ảnh và sẽ lặp ảnh, cover sẽ phóng to ảnh để đủ box nhưng sẽ mất ảnh
+	+ background-size: <unit> - điều chỉnh kích thước ảnh background (Ảnh có thể bị nén nên xấu)
+background-position: <position> - Chọn hướng bắt đầu ảnh
+	+ background-position: <unit> - điều chỉnh vị trí bắt đầu ảnh
+background-attachment: fixed - ảnh cố định khi di chuyển scroll
+background-clip: <box> - ảnh sẽ đổ ở vùng <box> trở vào trong
+	+ background-clip: text - ảnh chỉ đổ ở text, kết hợp với bg-img và color để tạo chữ độc đáo
+background-origin: <box> - ảnh bắt đầu đổ ở vùng <box>
+
+==> background: bg-color bg-img bg-pos/bg-size bg-rpt bg-org bg-clip bg-attm
+
+backdrop-filter: - chỉnh một số yếu tố ảnh
+clip-path: - chỉnh hình dạng bg
+
+7) Image
+pointer-events: none - Ko thể tương tác với đối tượng, ko thể lấy link ảnh
+loading= lazy - Chỉ tải ảnh khi đến đoạn chứa hình ảnh, giảm tải băng thông
+
+8) Content
+content: <text> - Viết nội dung mà ko cần vào file html
+counter-reset: <counter-name> - tạo biến đếm mới
+
+9) Position
+position: relative - Cho phép điều chỉnh vị trí tương đối khối, vẫn chiếm vị trí ban đầu 
+	+ absolute - Cho phép điều chỉnh vị trí tuyệt đối khối, không còn tồn tại ở vị trí ban đầu
+	+ fixed - Vị trí cố định với khung nhìn
+	+ sticky - Bám dính box cha gần nhất
+left, right, top, bottom: <unit> - cách lề bao nhiêu đơn vị
+	+ inset - top right bot left
+z-index: int - Chỉnh layer khi dùng các loại position trên, layer càng cao thì càng ưu tiên trên đầu
+
+10) Layout
+float: <position> - Chuyển vị trí box về phía được chọn
+clear: <position> - Khiến box ko bị ảnh hưởng bởi các box có float
+
+display: flex - Chuyển bố cục thành luồng riêng, ko tuân theo quy tắc thông thường
+gap: tạo khoảng cách giữa các phần tử
+justify-content: - Thay đổi bố cục theo chiều main, chỉ sử dụng trong display: flex
+align-items: - Thay đổi bố cục 1 hàng theo chiều cross
+flex-wrap: - Xử lý xuống hàng khi tràn
+align-content: - Thay đổi bố cục nhiều hàng theo chiều cross, dùng cùng flex-wrap
+flex-direction: row/column(-reverse) - Thay đổi trục main và cross
+	flex-flow: <flex-wrap> <flex-direction>
+
+flex-self: flex-start/flex-end/center - Thay đổi bố cục bản thân theo trục cross
+flex-grow: <int> - Thay đổi chiều rộng của nó dựa vào tỉ số với các phần tử khác
+flex-shrink: <int> - Mức độ thu nhỏ, số càng lớn thì thu nhỏ càng nhanh
+flex-basis: <unit> - Tỉ lệ chiều tương ứng của khối so với trục main
+	flex: <fl-grow> <fl-shrink> <fl-basis>
+order: <int> - Thứ tự được sắp xếp, mặc định là 0, số lớn thì đứng sau số nhỏ trong main
